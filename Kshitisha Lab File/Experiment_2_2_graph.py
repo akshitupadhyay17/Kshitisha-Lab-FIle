@@ -33,7 +33,7 @@ num_searches = int(input("Enter the number of searches: "))
 for _ in range(num_searches):
     n = int(input("Enter the number of elements in the sorted array: "))
     elements = [random.randint(1, 1000) for _ in range(n)]
-    target = random.randint(1, 1000)
+    target = int(input("Enter the target element to search for: "))
     
     array_size, elapsed_time = measure_time(elements, target)
     array_sizes.append(array_size)
