@@ -2,26 +2,38 @@
 #include <stdbool.h>
 #include <time.h>
 
-bool linearSearch(int arr[], int n, int target) {
+int linearSearch(int arr[], int n, int target) {
     for (int i = 0; i < n; i++) {
         if (arr[i] == target) {
-            return true;
+            return i;
         }
     }
-    return false;
+    return -1;
 }
 
 int main() {
-    int elements[] = {64, 34, 25, 12, 22, 11, 90};
-    int n = sizeof(elements) / sizeof(elements[0]);
-    int target = 22;
+    int n;
+
+    printf("Enter the number of elements in the array: ");
+    scanf("%d", &n);
+
+    int elements[n];
+
+    printf("Enter %d elements separated by spaces: ", n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &elements[i]);
+    }
+
+    int target;
+    printf("Enter the target element to search for: ");
+    scanf("%d", &target);
 
     clock_t start_time = clock();
-    bool found = linearSearch(elements, n, target);
+    int foundIndex = linearSearch(elements, n, target);
     clock_t end_time = clock();
 
-    if (found) {
-        printf("Element %d found in the array.\n", target);
+    if (foundIndex != -1) {
+        printf("Element %d found at index %d in the array.\n", target, foundIndex);
     } else {
         printf("Element %d not found in the array.\n", target);
     }
